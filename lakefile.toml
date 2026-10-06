@@ -1,0 +1,369 @@
+name = "Erdos993Lean"
+version = "0.1.0"
+defaultTargets = ["Erdos993LeanNoCertificates21"]
+
+[leanOptions]
+pp.unicode.fun = true
+autoImplicit = false
+relaxedAutoImplicit = false
+
+[[require]]
+name = "mathlib"
+git = "https://github.com/leanprover-community/mathlib4"
+rev = "v4.28.0"
+
+[[lean_lib]]
+name = "Erdos993Lean"
+
+# Optional (not part of the default target): the floor at orders 19 and 20, checked by the kernel.
+# `lake build Erdos993LeanKernelExtra`; see the header of `Erdos993Lean/Floor/KernelExtra.lean`.
+[[lean_lib]]
+name = "Erdos993LeanKernelExtra"
+roots = ["Erdos993Lean.Floor.KernelExtra"]
+
+# Optional (not part of the default target until clean): the analytic route for forests with at
+# least 61 vertices (campaign ProofRuns/2026-09-28_analytic_large_n).  `lake build Erdos993LeanAnalytic`.
+[[lean_lib]]
+name = "Erdos993LeanAnalytic"
+roots = ["Erdos993Lean.Analytic.Defs", "Erdos993Lean.Ceiling.ValleyFree",
+  "Erdos993Lean.Analytic.Window", "Erdos993Lean.Analytic.Translate",
+  "Erdos993Lean.Analytic.Top", "Erdos993Lean.Analytic.TopCore", "Erdos993Lean.Analytic.Consistency",
+  "Erdos993Lean.Analytic.HardCore.Mixture", "Erdos993Lean.Analytic.HardCore.Weight",
+  "Erdos993Lean.Analytic.HardCore.Laplace", "Erdos993Lean.Analytic.HardCore.Tail",
+  "Erdos993Lean.Analytic.HardCore.Leaves", "Erdos993Lean.Analytic.HardCore.Variance",
+  "Erdos993Lean.Analytic.Density", "Erdos993Lean.Analytic.TopCert",
+  "Erdos993Lean.Analytic.NoValley.Core", "Erdos993Lean.Analytic.NoValley.FiniteRange",
+  "Erdos993Lean.Analytic.NoValley.Identities", "Erdos993Lean.Analytic.NoValley.LossForm",
+  "Erdos993Lean.Analytic.NoValley.LogConcave", "Erdos993Lean.Analytic.NoValley.FibreHalf",
+  "Erdos993Lean.Analytic.NoValley.FibreGeneral",
+  "Erdos993Lean.Analytic.NoValley.Explicit", "Erdos993Lean.Analytic.Tail",
+  "Erdos993Lean.Analytic.Fourier.Gauss", "Erdos993Lean.Analytic.Fourier.CharFun",
+  "Erdos993Lean.Analytic.Fourier.Circle", "Erdos993Lean.Analytic.Fourier.Majorant",
+  "Erdos993Lean.Analytic.Fourier.Numerics", "Erdos993Lean.Analytic.Fourier.Main",
+  "Erdos993Lean.Analytic.LargeMean.Main", "Erdos993Lean.Analytic.Assembly",
+  "Erdos993Lean.Analytic.AssemblyCore",
+  "Erdos993Lean.Analytic.All", "Erdos993Lean.Analytic.Profile30",
+  "Erdos993Lean.Analytic.Family", "Erdos993Lean.Analytic.Glue30",
+  "Erdos993Lean.Analytic.Density.Bands", "Erdos993Lean.Analytic.Density.Transfer",
+  "Erdos993Lean.Analytic.Density.Partition", "Erdos993Lean.Analytic.Density.Paths",
+  "Erdos993Lean.Analytic.Density.Record", "Erdos993Lean.Analytic.Density.Branches",
+  "Erdos993Lean.Analytic.Density.Induction", "Erdos993Lean.Analytic.Density.Records",
+  "Erdos993Lean.Analytic.Density.Main", "Erdos993Lean.Analytic.TailCert.Glue",
+  "Erdos993Lean.Analytic.TailCert.Sound", "Erdos993Lean.Analytic.Atlas.Checker",
+  "Erdos993Lean.Analytic.Atlas.Params", "Erdos993Lean.Analytic.Atlas.Kernel",
+  "Erdos993Lean.Analytic.Atlas.Bounds", "Erdos993Lean.Analytic.Atlas.Taylor",
+  "Erdos993Lean.Analytic.Atlas.Atoms", "Erdos993Lean.Analytic.Atlas.Fibres",
+  "Erdos993Lean.Analytic.Atlas.Sound", "Erdos993Lean.Analytic.Atlas.Profile",
+  "Erdos993Lean.Analytic.Atlas.Hyps", "Erdos993Lean.Analytic.Reserve.Defs",
+  "Erdos993Lean.Analytic.Reserve.Entropy", "Erdos993Lean.Analytic.Reserve.Tail",
+  "Erdos993Lean.Analytic.Reserve.Step", "Erdos993Lean.Analytic.Reserve.StepBand",
+  "Erdos993Lean.Analytic.Reserve.Moments", "Erdos993Lean.Analytic.Reserve.Tree",
+  "Erdos993Lean.Analytic.Reserve.Induction", "Erdos993Lean.Analytic.Reserve.Assembly",
+  "Erdos993Lean.Analytic.Reserve.UpperDefs", "Erdos993Lean.Analytic.Reserve.Cert.Sound",
+  "Erdos993Lean.Analytic.Reserve.Cert.Leaf", "Erdos993Lean.Analytic.Reserve.UpperBounds",
+  "Erdos993Lean.Analytic.Reserve.UpperTail", "Erdos993Lean.Analytic.Reserve.UpperLeaf",
+  "Erdos993Lean.Analytic.Reserve.UpperStep", "Erdos993Lean.Analytic.Reserve.O1Profile30",
+  "Erdos993Lean.Analytic.Reserve.UpperCert.Sound", "Erdos993Lean.Analytic.O2.Defs",
+  "Erdos993Lean.Analytic.O2.Main", "Erdos993Lean.Analytic.O2.Knots",
+  "Erdos993Lean.Analytic.O2.Final", "Erdos993Lean.Analytic.O2.Leaf",
+  "Erdos993Lean.Analytic.O2.Cert.DualSound", "Erdos993Lean.Analytic.O2.Cert.KernelSound",
+  "Erdos993Lean.Analytic.O2.Cert.PackSound", "Erdos993Lean.Analytic.O2.Cert.ContextSound",
+  "Erdos993Lean.Analytic.O2.Cert.BernSound", "Erdos993Lean.Analytic.O2.Cert.QuadSound",
+  "Erdos993Lean.Analytic.O2.Cert.LowerSound", "Erdos993Lean.Analytic.O2.Cert.PartSound",
+  "Erdos993Lean.Analytic.O2.Cert.ListSound", "Erdos993Lean.Analytic.O2.Cert.SourceSound",
+  "Erdos993Lean.Analytic.O2.Cert.PieceSound", "Erdos993Lean.Analytic.O2.Cert.PieceFind",
+  "Erdos993Lean.Analytic.O2.Cert.CellSound", "Erdos993Lean.Analytic.O2.Cert.CoverSound",
+  "Erdos993Lean.Analytic.O2.Cert.Bridge"]
+
+# Optional (lane A10): the verified cell checker of the repaired T3 potential, computational core
+# (Lean core only, so that it can be precompiled; the soundness proofs, standard axioms only, are in
+# `Erdos993Lean/Analytic/TailCert/Sound.lean`).  Declared after `Erdos993Lean` so that it owns its
+# modules.  `lake build Erdos993LeanTailCertCompute`.
+[[lean_lib]]
+name = "Erdos993LeanTailCertCompute"
+roots = ["Erdos993Lean.Analytic.TailCert.Compute.Bands"]
+globs = ["Erdos993Lean.Analytic.TailCert.Compute.+"]
+precompileModules = true
+
+# Optional (lane A10): the 150 band certificates of the repaired T3 potential evaluated by
+# `native_decide` (one module per band), and `tailBound_profile30 : TailBound Profile30.P`.
+# `lake build Erdos993LeanTailCert`; see the header of `Erdos993Lean/Analytic/TailCert/Main.lean`.
+[[lean_lib]]
+name = "Erdos993LeanTailCert"
+roots = ["Erdos993Lean.Analytic.TailCert.Main"]
+globs = ["Erdos993Lean.Analytic.TailCert.Checks.+", "Erdos993Lean.Analytic.TailCert.Main"]
+
+# Optional (lane A9 of the analytic campaign): Soul's O4 atlas of rational dual boxes checked in Lean.
+# The checks are evaluated by `native_decide` (Erdos993Lean/Analytic/Atlas/Checks/*.lean, one per band);
+# their meaning is proved on standard axioms in Erdos993Lean/Analytic/Atlas/Sound.lean.
+# Build by module name, one module at a time.
+[[lean_lib]]
+name = "Erdos993LeanAtlas"
+roots = ["Erdos993Lean.Analytic.Atlas.Main"]
+globs = ["Erdos993Lean.Analytic.Atlas.Data.+", "Erdos993Lean.Analytic.Atlas.Checks.+"]
+
+# Optional (lane A12): the verified cell checker of O1's finite box (Astra's reserve cells), computational
+# core and data (Lean core and lane A10's interval core only, so that it can be precompiled; the soundness
+# proofs, standard axioms only, are in `Erdos993Lean/Analytic/Reserve/Cert/Sound.lean`).  Declared after
+# `Erdos993Lean` so that it owns its modules.  `lake build Erdos993LeanReserveCertCompute`.
+[[lean_lib]]
+name = "Erdos993LeanReserveCertCompute"
+roots = ["Erdos993Lean.Analytic.Reserve.Cert.Compute.Cell"]
+globs = ["Erdos993Lean.Analytic.Reserve.Cert.Compute.+"]
+precompileModules = true
+
+# Optional (lane A12): `BoxOK` and `LeafOK` for band0 … band3, the checks evaluated by `native_decide`
+# (one module per check, `Erdos993Lean/Analytic/Reserve/Cert/Checks/*.lean`).  Build by module name, one
+# module at a time; see the header of `Erdos993Lean/Analytic/Reserve/Cert/Main.lean`.
+[[lean_lib]]
+name = "Erdos993LeanReserveCert"
+roots = ["Erdos993Lean.Analytic.Reserve.Cert.Main", "Erdos993Lean.Analytic.Reserve.Cert.Bands"]
+globs = ["Erdos993Lean.Analytic.Reserve.Cert.Checks.+", "Erdos993Lean.Analytic.Reserve.Cert.Main",
+  "Erdos993Lean.Analytic.Reserve.Cert.Bands"]
+
+# Optional (lane A15): the verified cell checker of O1's upper finite box (Astra's upper cells, refined), computational
+# core and data (Lean core, lane A10's interval core and lane A12's compute core only, so that it can be precompiled;
+# the soundness proofs, standard axioms only, are in `Erdos993Lean/Analytic/Reserve/UpperCert/Sound.lean`).  Declared
+# after `Erdos993Lean` so that it owns its modules.  `lake build Erdos993LeanUpperCertCompute`.
+[[lean_lib]]
+name = "Erdos993LeanUpperCertCompute"
+roots = ["Erdos993Lean.Analytic.Reserve.UpperCert.Compute.Cell"]
+globs = ["Erdos993Lean.Analytic.Reserve.UpperCert.Compute.+"]
+precompileModules = true
+
+# Optional (lane A15): `UpperBoxOK`, the checks evaluated by `native_decide` (one module per trie piece,
+# `Erdos993Lean/Analytic/Reserve/UpperCert/Checks/*.lean`), and the consumers `varianceBound_profile30`,
+# `erdos993_of_O2` (`UpperCert/Final.lean`).  Build by module name, one module at a time; see the header of
+# `Erdos993Lean/Analytic/Reserve/UpperCert/Main.lean`.
+[[lean_lib]]
+name = "Erdos993LeanUpperCert"
+roots = ["Erdos993Lean.Analytic.Reserve.UpperCert.Main", "Erdos993Lean.Analytic.Reserve.UpperCert.Final"]
+globs = ["Erdos993Lean.Analytic.Reserve.UpperCert.Checks.+", "Erdos993Lean.Analytic.Reserve.UpperCert.Main",
+  "Erdos993Lean.Analytic.Reserve.UpperCert.Final"]
+
+# Optional (lane A18): the O2 certificate checker (the local payment on the O2 bands), computational core and data
+# (Lean core and lane A10's interval core only, so that it can be precompiled; the soundness proofs, standard axioms
+# only, are in `Erdos993Lean/Analytic/O2/Cert/*.lean`).  `lake build Erdos993LeanO2CertCompute`.
+[[lean_lib]]
+name = "Erdos993LeanO2CertCompute"
+roots = ["Erdos993Lean.Analytic.O2.Cert.Compute.Engine"]
+globs = ["Erdos993Lean.Analytic.O2.Cert.Compute.+"]
+precompileModules = true
+
+# Optional (lane A18): the O2 band checks evaluated by `native_decide` (one module per root box,
+# `Erdos993Lean/Analytic/O2/Cert/Checks/*.lean`) and `localPaymentOK_<band>`.  Build by module name, one module at a
+# time; see the header of `Erdos993Lean/Analytic/O2/Cert/Main.lean`.
+[[lean_lib]]
+name = "Erdos993LeanO2Cert"
+roots = ["Erdos993Lean.Analytic.O2.Cert.Main"]
+globs = ["Erdos993Lean.Analytic.O2.Cert.Checks.+", "Erdos993Lean.Analytic.O2.Cert.Bands.+",
+  "Erdos993Lean.Analytic.O2.Cert.Main"]
+
+# Optional (lane A19): the n ≥ 52 strip of the O4 atlas — lane R52's 594 rational dual boxes over
+# [floor(n ≥ 52), floor(n ≥ 61)] on the 30 bands, as data for lane A9's checker, and the 30 band checks
+# evaluated by `native_decide` (`Erdos993Lean/Analytic/N52/Checks/S01.lean` … `S30.lean`, one per band; their
+# meaning is lane A9's `Atlas.band_explicitThreshold`, standard axioms).  Build by module name, one at a time.
+[[lean_lib]]
+name = "Erdos993LeanN52Atlas"
+roots = ["Erdos993Lean.Analytic.N52.Data.Strip"]
+globs = ["Erdos993Lean.Analytic.N52.Data.+", "Erdos993Lean.Analytic.N52.Checks.+"]
+
+# Optional (lane A19): the analytic route for every forest with at least 52 vertices
+# (`N52.unimodal_of_ge_52`), the floor from the tree census (`N52.floorStatement_52_of_census`) and Erdős #993
+# from `TreeSeedCensus 51` (`N52.erdos993_of_treeSeedCensus51`).  Build by module name.
+[[lean_lib]]
+name = "Erdos993LeanN52"
+roots = ["Erdos993Lean.Analytic.N52.Main", "Erdos993Lean.Analytic.N52.Defs",
+  "Erdos993Lean.Analytic.N52.Profile", "Erdos993Lean.Analytic.N52.Density",
+  "Erdos993Lean.Analytic.N52.Inputs", "Erdos993Lean.Analytic.N52.Strip", "Erdos993Lean.Analytic.N52.O4",
+  "Erdos993Lean.Analytic.N52.Analytic", "Erdos993Lean.Analytic.N52.Floor"]
+
+# Optional (lane A20): the analytic route for every forest with at least 51 vertices
+# (`N51.unimodal_of_ge_51`), the floor from the tree census and Erdős #993 from `TreeSeedCensusBetween 26 50`
+# (`N51.erdos993_of_treeSeedCensus_26_50`).  Build by module name.
+[[lean_lib]]
+name = "Erdos993LeanN51"
+roots = ["Erdos993Lean.Analytic.N51.Main", "Erdos993Lean.Analytic.N51.Records",
+  "Erdos993Lean.Analytic.N51.Profile", "Erdos993Lean.Analytic.N51.Density", "Erdos993Lean.Analytic.N51.Strip",
+  "Erdos993Lean.Analytic.N51.O4", "Erdos993Lean.Analytic.N51.Analytic", "Erdos993Lean.Analytic.N51.Floor"]
+
+# Optional (lane A20): the n ≥ 48 strip of the O4 atlas — lane R4X's trial boxes over [floor(n ≥ 48), floor(n ≥ 52)]
+# on 31 pieces (the 30 bands with bands 23 and 26 split at 27/20 and 33/20, 17/10), as data for lane A9's checker, and
+# the 31 piece checks evaluated by `native_decide` (`Erdos993Lean/Analytic/N48/Checks/*.lean`); the four O3 sub-band
+# rows at t = 0 (`Erdos993Lean/Analytic/N48/TailChecks/*.lean`, lane A10's checker `checkBand`, one `native_decide`
+# each).  Their meaning: `Atlas.band_explicitThreshold`, `TailCert.checkBand_sound` (standard axioms).  Build by
+# module name, one at a time.
+[[lean_lib]]
+name = "Erdos993LeanN48Atlas"
+roots = ["Erdos993Lean.Analytic.N48.TailChecks.P22"]
+globs = ["Erdos993Lean.Analytic.N48.Data.+", "Erdos993Lean.Analytic.N48.Checks.+",
+  "Erdos993Lean.Analytic.N48.TailChecks.+"]
+
+# Optional (lane A20): the analytic route for every forest with at least 48 vertices
+# (`N48.unimodal_of_ge_48`), the floor from the tree census and Erdős #993 from `TreeSeedCensusBetween 26 47`
+# (`N48.erdos993_of_treeSeedCensus_26_47`).  Build by module name.
+[[lean_lib]]
+name = "Erdos993LeanN48"
+roots = ["Erdos993Lean.Analytic.N48.Main", "Erdos993Lean.Analytic.N48.Records",
+  "Erdos993Lean.Analytic.N48.Pieces", "Erdos993Lean.Analytic.N48.Profile", "Erdos993Lean.Analytic.N48.Tail",
+  "Erdos993Lean.Analytic.N48.Density", "Erdos993Lean.Analytic.N48.Mono", "Erdos993Lean.Analytic.N48.Strip",
+  "Erdos993Lean.Analytic.N48.O4", "Erdos993Lean.Analytic.N48.Analytic", "Erdos993Lean.Analytic.N48.Floor"]
+
+# Optional (lane A21): the referee-adopted ladder rows in Lean (`Erdos993Lean/Analytic/Ladder/`): the three O1R rows
+# through lane A12's cell checker (`O1/BoxR1.lean` … `BoxR3.lean`, one `native_decide` each, `O1/Rows.lean`), the three
+# O2R rows through lane A18's checker (`O2/Checks/*.lean`, 12 `native_decide` per row, `O2/Rows.lean`), and lane O3R's
+# rows 5–26 at `t = 0` through lane A10's checker (`O3/Row05.lean` … `Row26.lean`, one `native_decide` each).  Build by
+# module name, one check module at a time.
+[[lean_lib]]
+name = "Erdos993LeanLadder"
+roots = ["Erdos993Lean.Analytic.Ladder.O1.Rows", "Erdos993Lean.Analytic.Ladder.O2.Rows",
+  "Erdos993Lean.Analytic.Ladder.O3.Rows"]
+globs = ["Erdos993Lean.Analytic.Ladder.+"]
+
+# Optional (lane A21): the n ≥ 45 strip of the O4 atlas — lane R4X's trial boxes (trimmed) and two strips built by this
+# lane over [floor(n ≥ 45), floor(n ≥ 48)] on the 30 pieces where the floor drops, as data for lane A9's checker, and the
+# 30 piece checks evaluated by `native_decide` (`Erdos993Lean/Analytic/N45/Checks/*.lean`; their meaning is
+# `Atlas.band_explicitThreshold`, standard axioms).  Build by module name, one at a time.
+[[lean_lib]]
+name = "Erdos993LeanN45Atlas"
+roots = ["Erdos993Lean.Analytic.N45.Data.Strip"]
+globs = ["Erdos993Lean.Analytic.N45.Data.+", "Erdos993Lean.Analytic.N45.Checks.+"]
+
+# Optional (lane A21): the analytic route for every forest with at least 45 vertices (`N45.unimodal_of_ge_45`), the
+# floor from the tree census and Erdős #993 from `TreeSeedCensusBetween 26 44` (`N45.erdos993_of_treeSeedCensus_26_44`).
+# Build by module name.
+[[lean_lib]]
+name = "Erdos993LeanN45"
+roots = ["Erdos993Lean.Analytic.N45.Main", "Erdos993Lean.Analytic.N45.Mono", "Erdos993Lean.Analytic.N45.Pieces",
+  "Erdos993Lean.Analytic.N45.Profile", "Erdos993Lean.Analytic.N45.Tail", "Erdos993Lean.Analytic.N45.Density",
+  "Erdos993Lean.Analytic.N45.Strip", "Erdos993Lean.Analytic.N45.O4", "Erdos993Lean.Analytic.N45.Analytic",
+  "Erdos993Lean.Analytic.N45.Floor"]
+
+# Optional (lane A21): the n ≥ 44 step — the record `x = 8/5` (`N44/Records.lean`), the pieces, the n ≥ 44 strip of the
+# O4 atlas (`Erdos993Lean/Analytic/N44/Checks/*.lean`, `native_decide`) and the analytic route for every forest with at
+# least 44 vertices (`N44.unimodal_of_ge_44`, `N44.erdos993_of_treeSeedCensus_26_43`).  Build by module name.
+[[lean_lib]]
+name = "Erdos993LeanN44Atlas"
+roots = ["Erdos993Lean.Analytic.N44.Data.Strip"]
+globs = ["Erdos993Lean.Analytic.N44.Data.+", "Erdos993Lean.Analytic.N44.Checks.+"]
+
+[[lean_lib]]
+name = "Erdos993LeanN44"
+roots = ["Erdos993Lean.Analytic.N44.Main", "Erdos993Lean.Analytic.N44.Records", "Erdos993Lean.Analytic.N44.Pieces",
+  "Erdos993Lean.Analytic.N44.Profile", "Erdos993Lean.Analytic.N44.Tail", "Erdos993Lean.Analytic.N44.Density",
+  "Erdos993Lean.Analytic.N44.Strip", "Erdos993Lean.Analytic.N44.O4", "Erdos993Lean.Analytic.N44.Analytic",
+  "Erdos993Lean.Analytic.N44.Floor"]
+
+# Optional (lane A22): the MGF + two-sided no-valley criterion (`Erdos993Lean/Analytic/MGF/Criterion.lean`,
+# `ExplicitThresholdMGF2 → NoValleyAtMGF2`), the forest input in MGF form (`MGF/Rows.lean`: the O3 Laplace bounds of
+# the N44 pieces before the Markov step), the verified box checker of the MGF + two-sided atlas (`MGF/Checker.lean`,
+# core only; its soundness `MGF/Sound.lean`, standard axioms), its data and checks (`MGF/Data/*`, `MGF/Checks/*`,
+# `native_decide`) and the rungs.  Build by module name, one check module at a time.
+[[lean_lib]]
+name = "Erdos993LeanMGF"
+roots = ["Erdos993Lean.Analytic.MGF.Criterion"]
+globs = ["Erdos993Lean.Analytic.MGF.+"]
+
+# Optional (lane A24): rung 25 of the MGF + two-sided atlas — the 12 changed strips as data and checks
+# (`MGF/Data/R25Sxx.lean`, `MGF/Checks/R25Sxx.lean`, `native_decide`; the 43 unchanged strips reuse the rung-27 modules),
+# O5 at 25 (`MGF/N25/Density.lean`), the floor from the `n ≤ 24` checks only (`MGF/N25/Floor.lean`) and
+# `N25.erdos993_noZhang_25 : Erdos993Statement` (`MGF/N25/Main.lean`).  Build by module name, one check module at a time.
+[[lean_lib]]
+name = "Erdos993LeanMGF25"
+roots = ["Erdos993Lean.Analytic.MGF.N25.Main"]
+globs = ["Erdos993Lean.Analytic.MGF.N25.+"]
+
+# Optional (lane A24): rung 21 of the MGF + two-sided atlas — the 55 strips as data and checks (`MGF/Data/R21Sxx.lean`,
+# `MGF/Checks/R21Sxx.lean`, `native_decide`) at the N44 caps with lane O1R21's two O1 rows on pieces 24 and 27
+# (`MGF/N21/Pieces.lean`, `Ladder/O1/RowsN21.lean`, `MGF/N21/Caps.lean`), O5 at 21 (`MGF/N21/Density.lean`), the
+# kernel floor `floorStatement_21_kernel` and `N21.erdos993_noZhang_21 : Erdos993Statement` (`MGF/N21/Main.lean`).
+# Build by module name, one check module at a time.
+[[lean_lib]]
+name = "Erdos993LeanMGF21"
+roots = ["Erdos993Lean.Analytic.MGF.N21.Main"]
+globs = ["Erdos993Lean.Analytic.MGF.N21.+"]
+
+# The second proof of Erdős #993 without certificates, from the kernel-checked floor at 21 (lanes A24, A23):
+# `Erdos993Lean.Analytic.MGF.N21.erdos993_noZhang_21 : Erdos993Statement` (`Erdos993Lean/Analytic/MGF/N21/Main.lean`).
+# This package contains exactly its import closure.  `lake build Erdos993LeanNoCertificates21` builds the whole closure
+# (including every `native_decide` check module); README.md gives the staged route (the precompiled compute libraries
+# first, then the check modules one at a time, then this target).  The other library targets above are copied
+# verbatim from the full repository, so that each module keeps its owning library and its precompilation setting;
+# some of their listed roots are not part of this package, so build the targets named in README.md, by name.
+[[lean_lib]]
+name = "Erdos993LeanNoCertificates21"
+roots = ["Erdos993Lean.Analytic.MGF.N21.Main"]
+
+# Optional (lane FIBER-A): Lemmas 2.1-2.2 of the binomial-fiber return (saturating matching of a maximum
+# independent set of a forest; exposed leaves).  Standard axioms only.  `lake build Erdos993LeanFiberMatching`.
+[[lean_lib]]
+name = "Erdos993LeanFiberMatching"
+roots = ["Erdos993Lean.Fiber.Matching"]
+# Optional (Lean lane FIBER-C): the fiber-inventory identities `N[y, m]` shared by both proof
+# programs (support/normalization, the two counting rows, the shadow inequality).  Standard
+# axioms only.  `lake build Erdos993LeanFiberInventory`.
+[[lean_lib]]
+name = "Erdos993LeanFiberInventory"
+roots = ["Erdos993Lean.Fiber.Inventory"]
+# Optional (lane FIBER-B): the matching-excess inequality (the blocker-charge payment), Theorem 3.1 of
+# the 29 Sep binomial-fiber return, the count identities (8)-(10) of its Section 4, and both as rows on
+# the inventory N[y,m] = Zhang.tCount (standard axioms only).  `lake build Erdos993LeanFiberCharges`.
+[[lean_lib]]
+name = "Erdos993LeanFiberCharges"
+roots = ["Erdos993Lean.Fiber.Charges", "Erdos993Lean.Fiber.Counts",
+  "Erdos993Lean.Fiber.InventoryRows"]
+# Optional (lane FIBER-FLOOR): proof 3, every forest with at most 20 vertices is unimodal without enumerating forests
+# (the binomial-fiber consumer of the 29 Sep return: the basic inventory relaxation and its 130 exact rational
+# certificates with n <= 20, checked by the kernel with `decide +kernel`), and its composition with the analytic
+# ceiling at 21.  `lake build Erdos993LeanFiberFloor`; see docs/PROOF3_FIBER_FLOOR.md.
+[[lean_lib]]
+name = "Erdos993LeanFiberFloor"
+roots = ["Erdos993Lean.Fiber.Cert", "Erdos993Lean.Fiber.CertData", "Erdos993Lean.Fiber.Ledger",
+  "Erdos993Lean.Fiber.Floor", "Erdos993Lean.Fiber.Main"]
+
+# Lane ONE-ROUTE-A: Appendix N.4 exact interval computations, independently
+# soundness-proved in HandVariance/*.lean. Core-only native evaluation.
+# Build the data modules sequentially to respect the two-job lane limit.
+[[lean_lib]]
+name = "Erdos993LeanHandVarianceCompute"
+roots = ["Erdos993Lean.Analytic.HandVariance.Compute.Checks"]
+globs = ["Erdos993Lean.Analytic.HandVariance.Compute.+"]
+precompileModules = true
+
+[[lean_lib]]
+name = "Erdos993LeanHandVarianceData"
+roots = ["Erdos993Lean.Analytic.HandVariance.Data.Mid", "Erdos993Lean.Analytic.HandVariance.Data.Lo", "Erdos993Lean.Analytic.HandVariance.Data.U1", "Erdos993Lean.Analytic.HandVariance.Data.U2", "Erdos993Lean.Analytic.HandVariance.Data.U3", "Erdos993Lean.Analytic.HandVariance.Data.U4", "Erdos993Lean.Analytic.HandVariance.Data.MidPolygons", "Erdos993Lean.Analytic.HandVariance.Data.OtherPolygons", "Erdos993Lean.Analytic.HandVariance.Data.Base"]
+globs = ["Erdos993Lean.Analytic.HandVariance.Data.Mid", "Erdos993Lean.Analytic.HandVariance.Data.Lo", "Erdos993Lean.Analytic.HandVariance.Data.U1", "Erdos993Lean.Analytic.HandVariance.Data.U2", "Erdos993Lean.Analytic.HandVariance.Data.U3", "Erdos993Lean.Analytic.HandVariance.Data.U4", "Erdos993Lean.Analytic.HandVariance.Data.MidPolygons", "Erdos993Lean.Analytic.HandVariance.Data.OtherPolygons", "Erdos993Lean.Analytic.HandVariance.Data.Base"]
+precompileModules = true
+
+# Optional (lane ONE-ROUTE-A): Appendix N.4's hand variance bound for every
+# finite forest and its exact O1 profile consumer. Build the computational
+# libraries first, then the new modules in import order (CHECKS/build_hand_variance.py).
+[[lean_lib]]
+name = "Erdos993LeanHandVariance"
+roots = ["Erdos993Lean.Analytic.HandVariance.Main"]
+
+# Lane C: paper v2.1 single MGF route. Specific modules are built sequentially.
+[[lean_lib]]
+name = "Erdos993LeanV21"
+roots = ["Erdos993Lean.Analytic.V21.Main", "Erdos993Lean.Analytic.V21.ConversionPass"]
+globs = ["Erdos993Lean.Analytic.V21.+"]
+
+# Lane D: real statement/proof layer.
+[[lean_lib]]
+name = "Erdos993LeanV22"
+roots = ["Erdos993Lean.Analytic.V22.Checks.Statements"]
+globs = ["Erdos993Lean.Analytic.V22.+"]
+
+# Computational libraries own their modules and precompile their definitions.
+[[lean_lib]]
+name = "Erdos993LeanV22Data"
+roots = ["Erdos993Lean.Analytic.V22.RationalData"]
+globs = ["Erdos993Lean.Analytic.V22.RationalData"]
+precompileModules = true
+
+[[lean_lib]]
+name = "Erdos993LeanV22Compute"
+roots = ["Erdos993Lean.Analytic.V22.Compute.Expr"]
+globs = ["Erdos993Lean.Analytic.V22.Compute.+", "Erdos993Lean.Analytic.V22.GeneratedWingData"]
+precompileModules = true

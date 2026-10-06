@@ -1,0 +1,19 @@
+import Erdos993Lean.Analytic.V21.Data.To50_38
+
+/-! Paper v2.1 Lemma 5.4: exact MGF certificate and rectangle cover.
+Source hashes and table comparisons are in CHECKS/V21/coverage_audit.json.
+One new native_decide. Its standard meaning is existing MGF.pieceOK_sound. -/
+
+namespace Erdos993Lean.Analytic.V21.Checks
+
+open Erdos993Lean.Analytic.MGF Erdos993Lean.Analytic.V21.Data
+
+set_option profiler true
+set_option profiler.threshold 500
+
+/-- Paper v2.1 Lemma 5.4, subinterval 38: all boxes and the cover pass. -/
+theorem checkTo50_38 :
+    pieceOK (pieceV21 38) mloTo50_38 mhiTo50_38 boxesTo50_38 slabsTo50_38 = true := by
+  native_decide
+
+end Erdos993Lean.Analytic.V21.Checks

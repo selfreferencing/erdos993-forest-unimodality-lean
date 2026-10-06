@@ -25,7 +25,8 @@ in `Erdos993Lean/Analytic/V22/Final.lean`. It has no premise. Here, as defined i
   means it checks 779 boxes, which include the 693 boxes that the paper uses.
 - **Forests with at most 24 vertices.** The formal proof uses a different method from Section 6 of the paper: 249 exact
   rational certificates of a linear relaxation of the fiber numbers, checked by the Lean kernel
-  (`Erdos993Lean.Fiber.floorStatement_25_fiber`).
+  (`Erdos993Lean.Fiber.floorStatement_25_fiber`). The relaxation is built from formal counterparts of Lemmas 6.2 and 6.3
+  and Theorem 6.5 of the paper; the rest of Section 6 is not formalized.
 
 ## Axioms
 
@@ -56,8 +57,9 @@ lake build Erdos993Lean.Analytic.V22.Final
 lake env lean Audit/AxiomsV22.lean
 ```
 
-Some modules need several GB of memory; building one module at a time is safe. Every source file here is byte-identical
-to the development commit `d3cf284` (whose Lean sources equal those of commit `63040a09`), which was built from a fresh
+Some modules need several GB of memory; building one module at a time is safe. Every module in `Erdos993Lean/` is byte-identical to the same
+file at the development commit `d3cf284` (whose Lean sources equal those of commit `63040a09`); `Audit/AxiomsV22.lean`
+and this README were written for this package. The development commit which was built from a fresh
 clone on 3 October 2026 and again, independently, on another machine on 5 October 2026; both builds printed exactly the
 five axioms above.
 

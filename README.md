@@ -1,7 +1,9 @@
-# Erdős Problem #993 in Lean 4: the formal proof of "Unimodality of the independence sequence of a forest"
+# Erdős Problem #993 in Lean 4: the formal proof of "Unimodality of Forest Independence Polynomials"
 
-This package is the Lean 4 formal proof that accompanies the paper *Unimodality of the independence sequence of a forest*,
-by Tong Zhang, Wei Li and Kevin Vallier (6 October 2026; the PDF and its LaTeX source will be added to `paper/`). It proves Erdős
+> Superseded. The current formalization is [erdos993-palomar](https://github.com/selfreferencing/erdos993-palomar).
+
+This package is the Lean 4 formal proof that accompanies the paper *Unimodality of Forest Independence Polynomials*,
+by Wei Li, Kevin Vallier and Tong Zhang (arXiv:2610.07943, 6 October 2026). It proves Erdős
 Problem #993: **every finite forest has a unimodal independence sequence.**
 
 Lean `v4.28.0` and Mathlib `v4.28.0`. The Lean code is licensed under the Apache License 2.0 (`LICENSE`).
